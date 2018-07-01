@@ -19,4 +19,7 @@ char **copy_env(char **environ, int size);
 void free_str(char **str);
 int check_path(t_env_tools env, char **path, char **str);
 void check_echo(char **str, t_env_tools env);
+int count_char(char *str,char c);
+void quotation_split(char *str);
+
 #endif

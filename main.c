@@ -1,13 +1,13 @@
 #include "includes/minishell.h"
 
-char **input()
+char *input()
 {
     char *str;
-    char **ret_str;
+    char *ret_str;
     ft_putstr("$>");
-    if (get_next_line(0, &str))
+    if ((get_next_line(0, &str)))
     {
-        ret_str = ft_strsplit(str, ' ');
+       ret_str = ft_strdup(str);
         free(str);
     }
     return(ret_str);
@@ -39,22 +39,28 @@ int main(int argc, char **argv, char  **environ)
     t_env_tools env;
     char *path;
     int n;
-
+    char *inp;
     n = size_str(environ);
     env.env_cpy = copy_env(environ, n);
     path_str(&env);
     while (1)
     {
-        str = input();
-        if (ft_strcmp(*str, "exit") == 0)
+        inp = input();
+        str = ft_strsplit(inp, ' ');
+        if (*str == NULL)
+            ;
+        else if (ft_strcmp(*str, "exit") == 0)
         {
             free(*str);
             ft_putstr("exit\n");
             break;
         }
-        if (ft_strcmp(*str, "echo") == 0)
+        else if (ft_strcmp(*str, "echo") == 0)
         {
-            check_echo(str, env);
+            if (count_char(inp,'"') % 2 == 0 && ft_strchr(inp, '"') != NULL)
+                quotation_split(inp);
+            else
+                check_echo(str, env);
         }
         /*  if (check_path(env, &path, str) == 0)
           {
@@ -67,7 +73,7 @@ int main(int argc, char **argv, char  **environ)
           {
              exec(path, str, env);
           }*/
-        free_str(str);
+       // free_str(str);
     }
     free_str(env.env_cpy);
     free_str(env.paths);

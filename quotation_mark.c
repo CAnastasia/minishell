@@ -15,8 +15,9 @@ int count_char(char *str,char c)
     return (count);
 }
 
-int is_sym_rec(char str[],
-             int s, int e)
+
+/*
+int is_sym_rec(char str[], int s, int e)
 {
     int i;
 
@@ -42,5 +43,6 @@ int is_sym(char str[])
     n = strlen(str);
     if (n == 0)
         return (0);
-    return isPalRec(str, 0, n - 1);
+    return is_sym_rec(str, 0, n - 1);
 }
+*/
