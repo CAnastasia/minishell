@@ -1,25 +1,17 @@
+/* ************************************************************************** */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   quotation_mark.c                                 .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: canastas <marvin@le-101.fr>                +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2018/07/17 19:49:37 by canastas     #+#   ##    ##    #+#       */
+/*   Updated: 2018/07/17 19:53:44 by canastas    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
+/* ************************************************************************** */
+
 #include "includes/minishell.h"
-
-int count_char(char *str, char c)
-{
-    int i;
-    int count;
-
-    i = 0;
-    count  = 0;
-    if (str)
-    {
-         while (str[i] != '\0')
-            {
-                if (str[i] == c)
-                    count++;
-                i++;
-            }
-    }
-
-    return (count);
-}
-
 
 static int		number_of_words(char const *s, char c, char d)
 {
@@ -97,7 +89,7 @@ char			**mi_strsplit(char const *s, char c, char d)
 	return (str);
 }
 
-char	*mi_strchr(const char *s, int c, int d)
+char			*mi_strchr(const char *s, int c, int d)
 {
 	while (*s != (char)c && *s != (char)d)
 	{
