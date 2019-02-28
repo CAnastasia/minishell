@@ -37,7 +37,7 @@ OBJ = $(addprefix $(OBJ_PATH),$(addsuffix .o,$(SRC)))
 
 INC	= $(addprefix -I,$(INC_PATH))
 
-all: $(NAME)
+all: $(NAME) libft/libft.a
 
 $(NAME): $(OBJ)
 	$(MAKE) -C ./libft
